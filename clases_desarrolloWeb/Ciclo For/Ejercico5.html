@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla</title>
+</head>
+<body bgcolor="lightgreen">
+    <!--Generar una tabla HTML en forma dinámica utilizando la sentencia FOR -->
+
+    <script language="javascript">
+      columnas =parseInt(prompt("Ingrese la cantidad de columnas:")) ;
+      filas = parseInt(prompt("Ingrese la cantidad de filas:"));
+
+      document.write("<table border='1' cellspacing='0' cellpadding='4'>");
+      for (r = 1; r <= filas; r++) {
+        document.write("<tr>");
+        for (c = 1; c <= columnas; c++) {
+          document.write("<td>Fila " + r + " Col " + c + "</td>");
+        }
+        document.write("</tr>");
+      }
+      document.write("</table>");
+    </script>
+
+
+
+</body>
+</html>

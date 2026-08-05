@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 4
+    Dada una lista de valores que representan temperaturas,
+     calcular la temperatura promedio y la cantidad de valores que representan 0 grados. La lista termina cuando se ingresa una temperatura mayor a 50.
+    -->
+    <script>
+      let temp = parseInt(prompt("Ingrese una temperatura:"));
+      let sum = 0;
+      let count = 0;
+      let cantzero = 0;
+
+      while (temp <= 50) {
+        if (temp === 0) {
+          cantzero++;
+        }
+        sum += temp;
+        count++;
+        temp = parseInt(prompt("Ingrese una temperatura:"));
+      }
+
+      let promedio = count > 0 ? sum / count : 0;
+
+      document.write("<h2>Resultados</h2>");
+      document.write("<p>Temperatura promedio: " + promedio.toFixed(2) + "</p>");
+      document.write("<p>Cantidad de temperaturas en 0 grados: " + cantzero + "</p>");
+    </script>
+</body>
+</html>

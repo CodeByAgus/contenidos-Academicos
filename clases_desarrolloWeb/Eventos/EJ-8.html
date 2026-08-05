@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8 - Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #cuadrado {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            background-color: purple;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 8 - Cuadrado Interactivo</h1>
+
+        <!--
+        Cuadrado interactivo
+        Cambiar de color al hacer clic, agrandarse al pasar el mouse, y volver al tamaño original cuando el mouse sale.
+        -->
+
+        <div id="cuadrado"></div>
+
+        <script>
+            const cuadrado = document.getElementById('cuadrado');
+            const colores = ['purple', 'red', 'blue', 'green', 'orange'];
+            let colorActual = 0;
+
+            cuadrado.addEventListener('click', function() {
+                colorActual = (colorActual + 1) % colores.length;
+                cuadrado.style.backgroundColor = colores[colorActual];
+            });
+
+            cuadrado.addEventListener('mouseenter', function() {
+                cuadrado.style.transform = 'scale(1.2)';
+            });
+
+            cuadrado.addEventListener('mouseleave', function() {
+                cuadrado.style.transform = 'scale(1)';
+            });
+        </script>
+    </div>
+</body>
+</html>

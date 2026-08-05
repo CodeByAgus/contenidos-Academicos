@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <style>
+        /* Reset default browser styles - margin & padding removed to start fresh, border-box for accurate sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;  /* Alternative: content-box (padding/border not included in width/height) */
+        }
+
+        /* Set default font for entire page */
+        body {
+            font-family: Arial, sans-serif;  /* Arial (fallback: any sans-serif). Other options: Helvetica, Verdana, Georgia, Courier */
+        }
+
+        /* Header container - white background with subtle shadow, stays at top when scrolling */
+        header {
+            background-color: #ffffff;  /* white, rgb(255,255,255), rgba(255,255,255,1) also work */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Format: offset-x offset-y blur-radius color. Use 'inset' for inner shadow */
+            position: sticky;  /* Alternatives: relative, absolute, fixed, static */
+        }
+
+        /* Flex container for header content - centered layout with max-width constraint */
+        .header-container {
+            max-width: 1200px;  /* Limits to 1200px on desktop. Units: em, rem, %, vh, vw */
+            margin: 0 auto;  /* Centers horizontally. Shorthand for margin-left/right: auto */
+            padding: 0 20px;  /* 20px left/right padding. Use padding-top/bottom for other sides */
+            display: flex;  /* Alternatives: grid, block, inline, inline-block */
+            justify-content: space-between;  /* Distributes items with space between. Also: center, flex-start, flex-end, space-around, space-evenly */
+            align-items: center;  /* Vertically centers flex items. Also: flex-start, flex-end, stretch, baseline */
+            height: 80px;  /* Fixed height. Use min-height for flexible sizing */
+        }
+
+            /* Logo link (icon + text) - horizontal flex layout with gap spacing */
+            .logo {
+                display: flex;  /* Arranges icon and text horizontally. Use gap instead of margin in flexbox */
+                align-items: center;  /* Vertically centers items */
+                gap: 10px;  /* 10px spacing between icon and text */
+                text-decoration: none;  /* Removes default link underline. Also: underline, line-through, overline */
+                color: #333;  /* Dark gray text. Also: hex, rgb(), rgba(), color names */
+            }
+
+            /* Circular icon with gradient background - centered content */
+            .logo-icon {
+                width: 40px;  /* Fixed width. Use min-width or max-width for flexible sizing */
+                height: 40px;  /* Match width for perfect square/circle */
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* Diagonal gradient. Also: radial-gradient, conic-gradient, solid colors */
+                border-radius: 50%;  /* Creates circle. Can use: px, %, or different values per corner */
+                display: flex;  /* Flexbox centers the letter inside */
+                align-items: center;  /* Vertical centering */
+                justify-content: center;  /* Horizontal centering */
+                color: white;  /* Text color inside icon */
+                font-weight: bold;  /* Weight 700. Also: normal (400), lighter (300), or numeric 100-900 */
+                font-size: 20px;  /* Use em/rem for responsive sizing */
+            }
+
+        /* Logo text - large bold dark gray */
+        .logo-text {
+            font-size: 22px;  /* Use rem/em for responsive sizing */
+            font-weight: bold;  /* Weight 700. Also: normal (400), lighter (300), or 600, 800, 900 */
+            color: #333;  /* Dark gray. Also: color names, rgb(), rgba() */
+        }
+
+        /* Navigation menu - horizontal flexbox with no bullets */
+        nav ul {
+            display: flex;  /* Horizontal layout. Also: grid, block, inline-flex */
+            list-style: none;  /* Removes bullets. Also: disc, circle, square */
+            gap: 30px;  /* Spacing between items. Preferred over margin in flexbox */
+        }
+
+        /* Navigation links - gray text with smooth color transition, relative positioning for underline effect */
+        nav a {
+            text-decoration: none;  /* No underline */
+            color: #666;  /* Medium gray - changes on hover via nav a:hover */
+            font-size: 14px;  /* Use rem/em for responsive sizing */
+            font-weight: 500;  /* Medium weight (500). Also: 300, 400, 600, 700, 800, 900 */
+            transition: color 0.3s ease;  /* Animate color changes. Also: all, background, transform */
+            position: relative;  /* Required for ::after pseudo-element positioning */
+        }
+
+        /* Navigation link hover state - purple color for visual feedback */
+        nav a:hover {
+            color: #667eea;  /* Purple on hover */
+        }
+
+        /* Pseudo-element creates underline animation under links */
+        nav a::after {
+            /* content: '' - Required for pseudo-elements. Can add: text, emoji, url(). Single/double quotes needed */
+            content: '';
+            /* position: absolute - Positions element relative to parent (nav a with position: relative). Alternatives: 'relative', 'fixed', 'static' */
+            position: absolute;
+            /* bottom: -5px - Places underline 5px below the link text. Can use: top, left, right with px, %, em units */
+            bottom: -5px;
+            /* left: 0 - Aligns underline to start of link. Can use: 'right: 0' or 'left: 50%' for different positioning */
+            left: 0;
+            /* width: 0 - Starts with 0 width (hidden). Animates to 100% on hover */
+            width: 0;
+            /* height: 2px - Underline thickness. Adjust for thicker/thinner line */
+            height: 2px;
+            /* background-color: #667eea - Color of underline (purple). Matches hover color */
+            background-color: #667eea;
+            /* transition: width 0.3s ease - Animates width change smoothly over 0.3s */
+            transition: width 0.3s ease;
+        }
+
+        /* Underline expands to full width on hover */
+        nav a:hover::after {
+            /* width: 100% - Expands the ::after underline to full link width when hovering. Creates sliding underline effect */
+            width: 100%;
+        }
+
+        /* Container for login/signup buttons on the right */
+        .header-right {
+            /* display: flex - Makes buttons align horizontally. Alternatives: 'grid', 'inline-flex' */
+            display: flex;
+            /* gap: 20px - Adds 20px spacing between buttons */
+            gap: 20px;
+            /* align-items: center - Vertically centers buttons. Alternatives: 'flex-start', 'flex-end', 'stretch' */
+            align-items: center;
+        }
+
+        /* Login button styling (outlined/ghost style) */
+        .btn-login {
+            /* padding: 8px 16px - Adds 8px top/bottom, 16px left/right padding. Can use: px, em, rem, % */
+            padding: 8px 16px;
+            /* background-color: transparent - Button has no background (hollow). Alternatives: 'white', hex colors, rgba() */
+            background-color: transparent;
+            /* color: #667eea - Text color is purple */
+            color: #667eea;
+            /* border: 2px solid #667eea - 2px solid purple border. Can use: 'dotted', 'dashed', '1px', '3px', 'none' */
+            border: 2px solid #667eea;
+            /* border-radius: 4px - Slight rounded corners. Alternatives: '0' (square), '50%' (circle), '8px', '20px' */
+            border-radius: 4px;
+            /* cursor: pointer - Changes cursor to pointer hand on hover. Alternatives: 'default', 'text', 'grab', 'wait' */
+            cursor: pointer;
+            /* font-size: 14px - Button text size. Use: rem/em for responsive sizing */
+            font-size: 14px;
+            /* font-weight: 500 - Medium weight text. Alternatives: 400 (normal), 600, 700 (bold) */
+            font-weight: 500;
+            /* transition: all 0.3s ease - Animates ALL properties changes smoothly. Can use: 'background-color', 'color' for specific properties */
+            transition: all 0.3s ease;
+        }
+
+        /* Login button styling on hover - background fills with purple */
+        .btn-login:hover {
+            /* background-color: #667eea - Fills button with purple background. Creates solid button effect */
+            background-color: #667eea;
+            /* color: white - Changes text to white for contrast against purple background */
+            color: white;
+        }
+
+        .btn-signup {
+            padding: 8px 16px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-signup:hover {
+            background-color: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                height: 60px;
+                padding: 0 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+
+            .header-right {
+                gap: 10px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">W</div>
+                <span class="logo-text">WebSite</span>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+</body>
+</html>

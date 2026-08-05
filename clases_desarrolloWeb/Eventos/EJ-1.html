@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #764ba2;
+        }
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 1 - Contador con Botón</h1>
+
+        <!--
+        Contador con botón y párrafo
+        Aumentar un contador cada vez que el usuario hace clic en el botón y mostrarlo en pantalla.
+        -->
+
+        <button>Incrementar</button>
+        <p>Contador: <span id="contador">0</span></p>
+
+        <script>
+            let contador = 0;
+            const btn = document.querySelector('button');
+            const spanContador = document.getElementById('contador');
+
+            btn.addEventListener('click', function() {
+                contador++;
+                spanContador.textContent = contador;
+            });
+        </script>
+    </div>
+</body>
+</html>

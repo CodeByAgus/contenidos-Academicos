@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <style>
+        /* Reset default browser styles - removes all margins and padding to start fresh */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling - basic font and background */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;  /* Light gray background for contrast */
+            line-height: 1.6;  /* Increases space between text lines */
+        }
+
+        /* Container that holds both main content and sidebar side-by-side */
+        .page-container {
+            display: flex;  /* Side-by-side layout for content and sidebar */
+            max-width: 1200px;  /* Limits total width on large screens */
+            margin: 0 auto;  /* Centers on page */
+            padding: 20px;  /* Space around entire layout */
+            gap: 30px;  /* Space between main content and sidebar */
+        }
+
+        /* Main content area - takes up most of the width */
+        .main-content {
+            flex: 1;  /* Takes all available space */
+            background-color: #ffffff;  /* White background for main content */
+            padding: 30px;  /* Internal spacing inside main area */
+            border-radius: 8px;  /* Rounded corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+        }
+
+        /* Main content heading */
+        .main-content h1 {
+            font-size: 32px;  /* Large title size */
+            color: #2c3e50;  /* Dark navy color */
+            margin-bottom: 20px;  /* Space below title */
+        }
+
+        /* Main content paragraphs */
+        .main-content p {
+            font-size: 16px;  /* Standard text size */
+            color: #555;  /* Medium gray for readability */
+            margin-bottom: 15px;  /* Space between paragraphs */
+        }
+
+        /* Sidebar container - fixed width column on the right */
+        aside {
+            width: 300px;  /* Fixed width sidebar - doesn't shrink or grow */
+            display: flex;  /* Arranges sidebar items vertically */
+            flex-direction: column;  /* Stacks items from top to bottom */
+            gap: 20px;  /* Space between sidebar widgets */
+        }
+
+        /* Individual sidebar widget/box styling */
+        .sidebar-widget {
+            background-color: #ffffff;  /* White background like main content */
+            padding: 20px;  /* Internal spacing inside widget */
+            border-radius: 8px;  /* Rounded corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+        }
+
+        /* Sidebar widget title styling */
+        .sidebar-widget h3 {
+            font-size: 18px;  /* Smaller than main heading but still prominent */
+            color: #2c3e50;  /* Dark navy color */
+            margin-bottom: 15px;  /* Space below title */
+            padding-bottom: 10px;  /* Space inside widget before border */
+            border-bottom: 2px solid #3498db;  /* Blue line separator below title */
+        }
+
+        /* Search widget styling - input field in sidebar */
+        .search-widget input {
+            width: 100%;  /* Takes full width of sidebar */
+            padding: 10px;  /* Internal spacing inside input field */
+            border: 1px solid #ddd;  /* Light gray border around input */
+            border-radius: 4px;  /* Slightly rounded corners */
+            font-size: 14px;  /* Slightly smaller than body text */
+            font-family: Arial, sans-serif;  /* Matches page font */
+        }
+
+        /* Focus state for search input - visual feedback when typing */
+        .search-widget input:focus {
+            outline: none;  /* Removes default blue outline */
+            border-color: #3498db;  /* Changes border to blue on focus */
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);  /* Subtle blue glow */
+        }
+
+        /* Categories list in sidebar - removes default bullets */
+        .categories-widget ul {
+            list-style: none;  /* Removes bullet points */
+        }
+
+        /* Individual category item */
+        .categories-widget li {
+            margin-bottom: 10px;  /* Space between categories */
+        }
+
+        /* Category links styling */
+        .categories-widget a {
+            text-decoration: none;  /* Removes underline */
+            color: #666;  /* Medium gray text */
+            font-size: 14px;  /* Slightly smaller text */
+            transition: color 0.3s ease;  /* Smooth color change on hover */
+            display: block;  /* Makes entire area clickable */
+            padding: 8px 0;  /* Padding for easier clicking */
+        }
+
+        /* Category link hover state */
+        .categories-widget a:hover {
+            color: #3498db;  /* Changes to blue on hover */
+            padding-left: 5px;  /* Slight indent on hover for visual feedback */
+        }
+
+        /* Recent posts widget list */
+        .recent-posts ul {
+            list-style: none;  /* Removes bullet points */
+        }
+
+        /* Recent post item styling */
+        .recent-posts li {
+            margin-bottom: 15px;  /* Space between posts */
+            padding-bottom: 12px;  /* Space at bottom of item */
+            border-bottom: 1px solid #eee;  /* Light line separating posts */
+        }
+
+        /* Last post shouldn't have border below */
+        .recent-posts li:last-child {
+            border-bottom: none;  /* Removes border from last item */
+            margin-bottom: 0;  /* No space below last item */
+        }
+
+        /* Recent post title link */
+        .recent-posts a {
+            text-decoration: none;  /* Removes underline */
+            color: #2c3e50;  /* Dark text */
+            font-size: 14px;  /* Slightly smaller text */
+            font-weight: 500;  /* Medium weight for importance */
+            transition: color 0.3s ease;  /* Smooth color change */
+            display: block;  /* Makes link a block element */
+        }
+
+        /* Recent post link hover state */
+        .recent-posts a:hover {
+            color: #3498db;  /* Changes to blue on hover */
+        }
+
+        /* Post date styling - smaller gray text */
+        .post-date {
+            font-size: 12px;  /* Very small text for dates */
+            color: #999;  /* Light gray color for secondary info */
+            margin-top: 5px;  /* Small space between title and date */
+        }
+
+        /* Tags widget - displays tags horizontally */
+        .tags-widget {
+            display: flex;  /* Side-by-side layout */
+            flex-wrap: wrap;  /* Allows tags to wrap to next line */
+            gap: 8px;  /* Space between tags */
+        }
+
+        /* Individual tag styling - small colored pills */
+        .tag {
+            background-color: #ecf0f1;  /* Light gray background */
+            color: #666;  /* Medium gray text */
+            padding: 6px 12px;  /* Internal spacing inside tag */
+            border-radius: 20px;  /* Very rounded for pill shape */
+            font-size: 12px;  /* Small text for tags */
+            text-decoration: none;  /* Removes underline */
+            transition: background-color 0.3s ease;  /* Smooth color change */
+        }
+
+        /* Tag hover state - changes background color */
+        .tag:hover {
+            background-color: #3498db;  /* Changes to blue */
+            color: white;  /* Text changes to white for contrast */
+        }
+
+        /* Responsive design for mobile/tablet screens */
+        @media (max-width: 768px) {
+            .page-container {
+                flex-direction: column;  /* Stacks sidebar below main content on mobile */
+                gap: 20px;  /* Reduced gap on mobile */
+            }
+
+            aside {
+                width: 100%;  /* Sidebar takes full width on mobile */
+            }
+
+            .main-content h1 {
+                font-size: 24px;  /* Smaller heading on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <h1>Article Title</h1>
+            <p>
+                This is the main content area. On desktop screens, the sidebar appears on the right side.
+                On mobile devices, the sidebar moves below the main content thanks to the responsive design.
+            </p>
+            <p>
+                The layout uses flexbox to position the main content and sidebar side-by-side. The main content
+                takes up most of the space (flex: 1 means it grows to fill available space), while the sidebar
+                has a fixed width of 300px.
+            </p>
+            <p>
+                When the screen is smaller than 768px, the layout switches to a single column with the sidebar
+                positioned below the main content using flex-direction: column on the page-container.
+            </p>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <!-- Search Widget -->
+            <div class="sidebar-widget search-widget">
+                <h3>Search</h3>
+                <input type="text" placeholder="Search articles...">
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget categories-widget">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#design">Design</a></li>
+                    <li><a href="#business">Business</a></li>
+                    <li><a href="#tutorials">Tutorials</a></li>
+                    <li><a href="#news">News</a></li>
+                </ul>
+            </div>
+
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget recent-posts">
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li>
+                        <a href="#">Getting Started with Web Design</a>
+                        <div class="post-date">June 15, 2024</div>
+                    </li>
+                    <li>
+                        <a href="#">10 CSS Tips for Beginners</a>
+                        <div class="post-date">June 10, 2024</div>
+                    </li>
+                    <li>
+                        <a href="#">Responsive Design Explained</a>
+                        <div class="post-date">June 5, 2024</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h3>Popular Tags</h3>
+                <div class="tags-widget">
+                    <a href="#" class="tag">HTML</a>
+                    <a href="#" class="tag">CSS</a>
+                    <a href="#" class="tag">JavaScript</a>
+                    <a href="#" class="tag">Web Design</a>
+                    <a href="#" class="tag">Responsive</a>
+                    <a href="#" class="tag">Tutorial</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+</body>
+</html>

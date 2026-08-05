@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 2
+    Se ingresa una cantidad indefinida de sueldos. Calcular su promedio. El ciclo corta cuando se ingresa un sueldo=0.
+    -->
+ 
+<script lenguage="javascript">  
+   let count = 0;
+   let total = 0;
+   let sueldo = parseInt(prompt("Ingrese un sueldo (0 para terminar):"));
+
+while(sueldo !== 0){
+    count++;
+    total += sueldo;
+    sueldo = parseInt(prompt("Ingrese un sueldo (0 para terminar):"));
+}
+
+let promedio = total / count;
+
+document.write("El promedio de sueldos es: " + promedio);
+
+
+
+</script>
+
+</body>
+</html>

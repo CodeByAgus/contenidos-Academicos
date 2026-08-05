@@ -1,0 +1,168 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1,
+h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Header */
+header {
+    padding: 0;
+    margin: 0;
+}
+
+header h1 {
+    background: white;
+    /* nombre en fondo blanco */
+    display: flex;
+    text-align: center;
+    align-content: center;
+    padding: 10px 18px;
+    border-radius: 6px;
+    margin: 12px auto;
+}
+
+/* imagen de cabecera ocupa todo el ancho; altura fija para mantener proporción */
+header img {
+    width: 100%;
+    height: 500px;
+    /* modificar este valor para cambiar la "altura" */
+    object-fit: cover;
+    /* mantiene la imagen recortada sin deformar */
+    display: block;
+    border-radius: 0;
+}
+
+/* Navegación */
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    background: #3ac995;
+}
+
+ul li {
+    margin: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    /* Sombra ligera: offset-x 0, offset-y 3px, blur 8px, opacidad baja */
+    box-shadow: 0 3px 08px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    background-color: #3e703d;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    /* separa los elementos del footer entre sí */
+}
+
+footer h2 {
+    color: #47864a;
+    font-size: 1.2rem;
+}
+
+form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    /* apila label arriba y input abajo */
+    align-items: center;
+    gap: 6px;
+}
+
+input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 180px;
+}
+
+/* Naturalist table styles (using ids) */
+#table-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#pet-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background: linear-gradient(180deg, #fbfdf8 0%, #f6fbf2 100%);
+    /* Sombra del contenedor de la tabla: más sutil */
+    box-shadow: 0 4px 12px rgba(46, 64, 43, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#pet-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    color: #27412a;
+}
+
+/* Style the first row as header */
+#pet-table tr:first-child th {
+    background: #e6f3e8;
+    color: #1f5b2b;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(31, 91, 43, 0.08);
+}
+
+/* Zebra for data rows */
+#pet-table tr:nth-child(even) {
+    background: rgba(240, 250, 240, 0.6);
+}
+
+#pet-table tr:hover {
+    background: rgba(220, 240, 220, 0.9);
+}
+
+#pet-table th:last-child {
+    font-weight: 600;
+}
+
+/* Se removió la regla @media para mantener CSS simple (junior-friendly).
+   Si necesitas soporte responsive en el futuro, agregamos reglas concretas. */

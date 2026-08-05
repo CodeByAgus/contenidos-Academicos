@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Content</title>
+    <style>
+        /* Reset default browser styles - removes all default margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling - sets basic font and background color */
+        body {
+            font-family: Arial, sans-serif;  /* Fallback fonts if Arial not available */
+            background-color: #f5f5f5;  /* Light gray background for page contrast */
+            line-height: 1.6;  /* Increases space between text lines for readability */
+        }
+
+        /* Main content container - centers content and limits max width */
+        main {
+            max-width: 1200px;  /* Prevents content from stretching too wide on large screens */
+            margin: 0 auto;  /* Centers the main content horizontally */
+            padding: 40px 20px;  /* Adds internal spacing (40px top/bottom, 20px left/right) */
+        }
+
+        /* Section heading styling - used for major divisions in content */
+        h1 {
+            font-size: 36px;  /* Large heading size for page title */
+            color: #2c3e50;  /* Dark navy color for good readability */
+            margin-bottom: 20px;  /* Space below heading */
+            font-weight: bold;  /* Makes heading prominent */
+        }
+
+        /* Subheading styling - used for section titles */
+        h2 {
+            font-size: 28px;  /* Slightly smaller than h1 */
+            color: #34495e;  /* Dark gray - slightly lighter than h1 */
+            margin-top: 40px;  /* Space above subheading when between content */
+            margin-bottom: 15px;  /* Space below subheading */
+            font-weight: bold;
+        }
+
+        /* Paragraph text styling - default body text */
+        p {
+            font-size: 16px;  /* Standard reading size */
+            color: #555;  /* Medium gray for easy reading */
+            margin-bottom: 15px;  /* Space between paragraphs */
+        }
+
+        /* Article/content card styling - white box with shadow for content separation */
+        article {
+            background-color: #ffffff;  /* White background stands out from gray page background */
+            padding: 30px;  /* Internal spacing for breathing room */
+            margin-bottom: 30px;  /* Space between articles */
+            border-radius: 8px;  /* Rounded corners for modern look */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow creates depth */
+        }
+
+        /* Section styling - groups related content together */
+        section {
+            margin-bottom: 40px;  /* Large gap between sections */
+        }
+
+        /* List styling - removes default bullets and adds custom spacing */
+        ul, ol {
+            margin-left: 20px;  /* Indents list from left edge */
+            margin-bottom: 15px;  /* Space below entire list */
+        }
+
+        /* Individual list item spacing */
+        li {
+            margin-bottom: 10px;  /* Space between list items */
+            color: #555;  /* Match paragraph text color */
+        }
+
+        /* Strong/bold text styling - emphasizes important content */
+        strong {
+            color: #2c3e50;  /* Darker color makes it stand out */
+            font-weight: bold;  /* Makes text bold */
+        }
+
+        /* Link styling - colored text with hover effect */
+        a {
+            color: #3498db;  /* Blue color for links */
+            text-decoration: none;  /* Removes default underline */
+            transition: color 0.3s ease;  /* Smooth color change on hover */
+        }
+
+        /* Link hover state - changes color when mouse hovers over link */
+        a:hover {
+            color: #2980b9;  /* Darker blue on hover */
+            text-decoration: underline;  /* Adds underline for extra visual feedback */
+        }
+
+        /* Button styling - calls to action within content */
+        .btn {
+            display: inline-block;  /* Allows padding to work properly (inline elements ignore padding) */
+            padding: 12px 24px;  /* Internal spacing inside button */
+            background-color: #3498db;  /* Blue background */
+            color: white;  /* White text for contrast */
+            text-decoration: none;  /* Removes underline from button links */
+            border-radius: 4px;  /* Slightly rounded corners */
+            font-weight: 500;  /* Medium weight font */
+            transition: background-color 0.3s ease;  /* Smooth background change on hover */
+            cursor: pointer;  /* Changes mouse cursor to pointer hand */
+            display: inline-block;  /* Allows size adjustment */
+            border: none;  /* Removes default button border */
+        }
+
+        /* Button hover state - changes background color */
+        .btn:hover {
+            background-color: #2980b9;  /* Darker blue on hover */
+        }
+
+        /* Grid layout for multiple content cards - displays items side by side */
+        .content-grid {
+            display: grid;  /* Creates flexible grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsive: auto-wraps based on screen size */
+            gap: 20px;  /* Space between grid items */
+            margin-bottom: 30px;  /* Space below entire grid */
+        }
+
+        /* Individual card in grid - white box with shadow */
+        .card {
+            background-color: #ffffff;  /* White background */
+            padding: 20px;  /* Internal spacing */
+            border-radius: 8px;  /* Rounded corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Animates on hover */
+        }
+
+        /* Card hover effect - lifts card slightly and increases shadow */
+        .card:hover {
+            transform: translateY(-5px);  /* Moves card up 5px for "lifting" effect */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);  /* Stronger shadow on hover */
+        }
+
+        /* Image styling within content - responsive images */
+        img {
+            max-width: 100%;  /* Never wider than container */
+            height: auto;  /* Maintains aspect ratio */
+            display: block;  /* Removes inline spacing below image */
+            margin: 20px 0;  /* Space above and below image */
+            border-radius: 8px;  /* Rounded corners on images */
+        }
+
+        /* Responsive design for mobile screens */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 15px;  /* Reduced padding on mobile */
+            }
+
+            h1 {
+                font-size: 28px;  /* Smaller heading on mobile */
+            }
+
+            h2 {
+                font-size: 22px;  /* Smaller subheading on mobile */
+            }
+
+            article {
+                padding: 20px;  /* Reduced padding inside articles */
+                margin-bottom: 20px;  /* Reduced spacing between articles */
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;  /* Single column on mobile instead of multiple */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- Main Page Title -->
+        <h1>Welcome to Our Website</h1>
+        <p>This is an example of the main content area of a typical webpage.</p>
+
+        <!-- Featured Article -->
+        <article>
+            <h2>Featured Article</h2>
+            <p>
+                This is a featured article section. It typically contains important content that you want
+                to highlight on your page. Articles are wrapped in white boxes (cards) that stand out from
+                the gray page background, making them easy to read and visually distinct.
+            </p>
+            <p>
+                The card has a subtle shadow which gives it a sense of depth. This is a common design pattern
+                in modern web design called "card-based layouts".
+            </p>
+            <a href="#" class="btn">Read More</a>
+        </article>
+
+        <!-- Content Section -->
+        <section>
+            <h2>Main Content Section</h2>
+            <p>
+                This section demonstrates how regular content is organized on a webpage. Notice how
+                different sections are separated by spacing to create visual organization.
+            </p>
+
+            <h3>Key Points:</h3>
+            <ul>
+                <li>Lists are indented for better readability</li>
+                <li>Each item has space between it and the next</li>
+                <li>Lists help organize information clearly</li>
+                <li>They're commonly used for features or points</li>
+            </ul>
+        </section>
+
+        <!-- Multiple Content Cards Grid -->
+        <section>
+            <h2>Featured Items</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Card One</h3>
+                    <p>This is a card component. Cards are containers that group related content together. They have a white background and subtle shadow.</p>
+                </div>
+                <div class="card">
+                    <h3>Card Two</h3>
+                    <p>Cards can contain text, images, links, and buttons. They're responsive and will stack on mobile devices.</p>
+                </div>
+                <div class="card">
+                    <h3>Card Three</h3>
+                    <p>When you hover over a card, it lifts up slightly and the shadow gets stronger, providing visual feedback to the user.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Another Article -->
+        <article>
+            <h2>Another Important Article</h2>
+            <p>Articles are similar to cards but typically span the full width of the content area. They're great for longer-form content like blog posts or detailed information.</p>
+            <p>
+                You can use <strong>bold text</strong> to emphasize important words or concepts. You can also use
+                <a href="#">links</a> to direct readers to other pages or resources.
+            </p>
+        </article>
+    </main>
+
+</body>
+</html>

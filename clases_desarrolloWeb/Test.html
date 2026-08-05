@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JavaScript - Presentación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tbody tr:hover {
+            background: #f5f5f5;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .categoria {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.95em;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .numero {
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .descripcion {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Mis Ejercicios de JavaScript</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="numero">Nº</th>
+                    <th>Categoría</th>
+                    <th>Descripción</th>
+                    <th style="text-align: center;">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ESTRUCTURAS CONDICIONALES (IF/ELSE) -->
+                <tr>
+                    <td class="numero">1</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Nota del alumno y aprobación</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 1)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">2</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Comparación de dos claves</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 2)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">3</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Validación de edad (mayor de edad)</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 3)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">4</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Operaciones según comparación de números</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 4)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">5</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Mayor de edad con alert</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 5)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">6</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Mayor de edad con confirmación</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 6)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">7</td>
+                    <td class="categoria">Condicionales</td>
+                    <td class="descripcion">Validación de usuario</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('condicionales', 7)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <!-- CICLOS (FOR, WHILE, ETC) -->
+                <tr>
+                    <td class="numero">8</td>
+                    <td class="categoria">Ciclo While</td>
+                    <td class="descripcion">Ejemplo de ciclo While</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('ciclos', 1)">Ejecutar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="numero">9</td>
+                    <td class="categoria">Ciclo For</td>
+                    <td class="descripcion">Ejemplo de ciclo For</td>
+                    <td style="text-align: center;">
+                        <button onclick="ejecutarEjercicio('ciclos', 2)">Ejecutar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // ESTRUCTURA GENERAL DEL CÓDIGO
+
+        // Objeto que contiene todos los ejercicios organizados por categoría
+        const ejercicios = {
+            condicionales: {
+                1: {
+                    titulo: "Ejercicio 1 - Nota del Alumno",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 1
+                        let nombre = prompt("¿Cuál es tu nombre?");
+                        let nota = prompt("¿Cuál es tu nota?");
+
+                        if (nota >= 4) {
+                            alert(`${nombre}, ¡Aprobaste! Tu nota es ${nota}`);
+                        } else {
+                            alert(`${nombre}, No aprobaste. Tu nota es ${nota}`);
+                        }
+                    }
+                },
+                2: {
+                    titulo: "Ejercicio 2 - Comparación de Claves",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 2
+                        let clave1 = prompt("Ingresa una clave:");
+                        let clave2 = prompt("Ingresa la clave nuevamente:");
+
+                        if (clave1 == clave2) {
+                            alert("Las claves coinciden");
+                        } else {
+                            alert("Las claves no coinciden");
+                        }
+                    }
+                },
+                3: {
+                    titulo: "Ejercicio 3 - Validación de Edad",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 3
+                        let edad = prompt("¿Cuál es tu edad?");
+
+                        if (edad > 18) {
+                            alert("Ud. es mayor de edad");
+                        } else {
+                            alert("Ud. es menor de edad");
+                        }
+                    }
+                },
+                4: {
+                    titulo: "Ejercicio 4 - Operaciones con Números",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 4
+                        let num1 = parseFloat(prompt("Ingresa el primer número:"));
+                        let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+
+                        if (num1 > num2) {
+                            alert(`Suma: ${num1 + num2}, Diferencia: ${num1 - num2}`);
+                        } else {
+                            alert(`Producto: ${num1 * num2}, División: ${num1 / num2}`);
+                        }
+                    }
+                },
+                5: {
+                    titulo: "Ejercicio 5 - Mayor de Edad",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 5
+                        let edad = prompt("¿Cuál es tu edad?");
+
+                        if (edad > 18) {
+                            alert("Ud. es mayor de edad");
+                        } else {
+                            alert("Ud. es menor de edad");
+                        }
+                    }
+                },
+                6: {
+                    titulo: "Ejercicio 6 - Mayor de Edad con Confirmación",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 6
+                        let edad = prompt("¿Cuál es tu edad?");
+
+                        if (edad > 18) {
+                            alert("Ud. es mayor de edad");
+                        } else {
+                            if (confirm("¿Deseas continuar?")) {
+                                alert("Usted continúa");
+                            } else {
+                                alert("Usted no continúa");
+                            }
+                        }
+                    }
+                },
+                7: {
+                    titulo: "Ejercicio 7 - Validación de Usuario",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 7
+                        const usuario = "admin";
+                        let usuarioIngresado = prompt("Ingresa el usuario:");
+
+                        if (usuario == usuarioIngresado) {
+                            alert("Bienvenido " + usuarioIngresado);
+                        } else {
+                            alert("Usuario no válido");
+                        }
+                    }
+                }
+            },
+            ciclos: {
+                1: {
+                    titulo: "Ejercicio 8 - Ciclo While",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 8
+                        let i = 1;
+                        let resultado = "";
+
+                        while (i <= 5) {
+                            resultado += `Iteración ${i}\n`;
+                            i++;
+                        }
+
+                        alert(resultado);
+                    }
+                },
+                2: {
+                    titulo: "Ejercicio 9 - Ciclo For",
+                    funcion: function() {
+                        // AQUÍ VA EL CÓDIGO DEL EJERCICIO 9
+                        let resultado = "";
+
+                        for (let i = 1; i <= 5; i++) {
+                            resultado += `Iteración ${i}\n`;
+                        }
+
+                        alert(resultado);
+                    }
+                }
+            }
+        };
+
+        // Función que ejecuta el ejercicio seleccionado
+        function ejecutarEjercicio(categoria, numero) {
+            try {
+                const ejercicio = ejercicios[categoria][numero];
+
+                if (ejercicio) {
+                    console.log(`Ejecutando: ${ejercicio.titulo}`);
+                    ejercicio.funcion();
+                } else {
+                    alert("Ejercicio no encontrado");
+                }
+            } catch (error) {
+                console.error("Error al ejecutar el ejercicio:", error);
+                alert("Hubo un error al ejecutar el ejercicio");
+            }
+        }
+    </script>
+</body>
+</html>

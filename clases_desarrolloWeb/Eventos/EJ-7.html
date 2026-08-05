@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7 - Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 7 - Input con Cambio de Borde en Foco</h1>
+
+        <!--
+        Input con cambio de borde en foco
+        Cambiar el borde del input a verde cuando recibe foco, y volver al color original cuando pierde foco.
+        -->
+
+        <input type="text" id="miInput" placeholder="Haz clic aquí">
+
+        <script>
+            const input = document.getElementById('miInput');
+
+            input.addEventListener('focus', function() {
+                input.style.borderColor = 'green';
+            });
+
+            input.addEventListener('blur', function() {
+                input.style.borderColor = '#ccc';
+            });
+        </script>
+    </div>
+</body>
+</html>

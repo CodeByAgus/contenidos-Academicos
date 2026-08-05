@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <style>
+        /* Reset default browser styles - removes all margin and padding to start from zero */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and html take full height for proper footer positioning */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Footer container - dark background at bottom of page, spans full width */
+        footer {
+            background-color: #2c3e50;  /* Dark navy/gray background color - typical for footers */
+            color: #ecf0f1;  /* Light gray text - provides good contrast against dark background */
+            padding: 40px 20px;  /* Adds internal spacing (40px top/bottom, 20px left/right) */
+            margin-top: 60px;  /* Creates space between main content and footer */
+        }
+
+        /* Footer content wrapper - limits max width and centers content */
+        .footer-container {
+            max-width: 1200px;  /* Limits width on large screens - matches typical website width */
+            margin: 0 auto;  /* Centers the footer content horizontally */
+            display: grid;  /* Uses grid layout instead of flex for multi-column footer */
+            grid-template-columns: repeat(3, 1fr);  /* Creates 3 equal-width columns - adjust number as needed */
+            gap: 30px;  /* Adds 30px spacing between columns */
+        }
+
+        /* Individual footer section styling */
+        .footer-section {
+            display: flex;  /* Arranges title and links vertically */
+            flex-direction: column;  /* Stacks items from top to bottom */
+            gap: 15px;  /* Spacing between section title and links */
+        }
+
+        /* Footer section title styling */
+        .footer-section h3 {
+            font-size: 16px;  /* Larger than links for visual hierarchy */
+            font-weight: bold;  /* Makes title stand out from regular text */
+            color: #ffffff;  /* Pure white - brighter than regular text for emphasis */
+            margin-bottom: 10px;  /* Extra space below title before links start */
+        }
+
+        /* Unordered list inside footer - removes default bullets */
+        .footer-section ul {
+            list-style: none;  /* Removes bullet points from list items */
+        }
+
+        /* Footer list items - links with vertical spacing */
+        .footer-section li {
+            margin-bottom: 8px;  /* Adds space between individual links */
+        }
+
+        /* Footer links styling - light text with hover effect */
+        .footer-section a {
+            text-decoration: none;  /* Removes underline from links */
+            color: #ecf0f1;  /* Light gray text to match footer theme */
+            font-size: 14px;  /* Slightly smaller than regular text */
+            transition: color 0.3s ease;  /* Animates color change on hover smoothly */
+        }
+
+        /* Footer link hover state - changes color on mouse over */
+        .footer-section a:hover {
+            color: #3498db;  /* Bright blue on hover for visual feedback */
+        }
+
+        /* Footer bottom section - copyright and legal links */
+        .footer-bottom {
+            border-top: 1px solid rgba(236, 240, 241, 0.2);  /* Subtle line separating bottom section */
+            margin-top: 30px;  /* Space above the border/bottom section */
+            padding-top: 20px;  /* Space below the border line */
+            display: flex;  /* Arranges copyright and bottom links horizontally */
+            justify-content: space-between;  /* Copyright on left, links on right */
+            align-items: center;  /* Vertically centers both sides */
+            flex-wrap: wrap;  /* Allows items to wrap on small screens */
+            gap: 20px;  /* Spacing between copyright and links */
+        }
+
+        /* Copyright text styling */
+        .footer-bottom p {
+            font-size: 12px;  /* Small text for copyright notice */
+            color: #95a5a6;  /* Slightly darker gray than regular footer text */
+        }
+
+        /* Bottom links (privacy, terms, etc.) - horizontal layout */
+        .footer-bottom-links {
+            display: flex;  /* Arranges links horizontally */
+            gap: 20px;  /* Spacing between individual bottom links */
+            list-style: none;  /* Removes bullet points */
+        }
+
+        /* Bottom links styling */
+        .footer-bottom-links a {
+            color: #ecf0f1;  /* Light text matching footer */
+            text-decoration: none;  /* No underline */
+            font-size: 12px;  /* Smaller text for bottom links */
+            transition: color 0.3s ease;  /* Smooth color animation on hover */
+        }
+
+        .footer-bottom-links a:hover {
+            color: #3498db;  /* Blue on hover, matching other links */
+        }
+
+        /* Responsive design for mobile/tablet screens */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;  /* Single column on mobile instead of 3 columns */
+                gap: 20px;  /* Reduced gap on mobile */
+            }
+
+            .footer-bottom {
+                flex-direction: column;  /* Stack copyright and bottom links vertically on mobile */
+                justify-content: center;  /* Center all items */
+                text-align: center;  /* Center align text */
+            }
+
+            .footer-bottom-links {
+                justify-content: center;  /* Center the bottom links */
+            }
+
+            footer {
+                padding: 30px 15px;  /* Reduced padding on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer>
+        <div class="footer-container">
+            <!-- Column 1: Company Information -->
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#press">Press</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Support and Help -->
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#status">Status</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Legal and Social -->
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookies</a></li>
+                    <li><a href="#security">Security</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom: Copyright and bottom links -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 My Website. All rights reserved.</p>
+            <ul class="footer-bottom-links">
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="#terms">Terms</a></li>
+                <li><a href="#cookies">Cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>

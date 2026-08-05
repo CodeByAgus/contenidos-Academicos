@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 4 - Detector de Teclas Presionadas</h1>
+
+        <!--
+        Detector de teclas presionadas
+        Mostrar en pantalla qué tecla fue presionada por el usuario.
+        -->
+
+        <p>Tecla presionada: <span id="tecla">Ninguna</span></p>
+
+        <script>
+            const spanTecla = document.getElementById('tecla');
+
+            document.addEventListener('keydown', function(e) {
+                spanTecla.textContent = e.key;
+            });
+        </script>
+    </div>
+</body>
+</html>

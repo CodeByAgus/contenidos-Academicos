@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #764ba2;
+        }
+        #caja {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: blue;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicio 2 - Cambio de Color de Fondo</h1>
+
+        <!--
+        Cambio de color de fondo
+        Al hacer clic en un botón, alternar el color de fondo de un div entre dos colores.
+        -->
+
+        <button>Cambiar Color</button>
+        <div id="caja"></div>
+
+        <script>
+            let esAzul = true;
+            const btn = document.querySelector('button');
+            const caja = document.getElementById('caja');
+
+            btn.addEventListener('click', function() {
+                if (esAzul) {
+                    caja.style.backgroundColor = 'red';
+                } else {
+                    caja.style.backgroundColor = 'blue';
+                }
+                esAzul = !esAzul;
+            });
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 8
+    Simular un cajero automático. Para ello, se cuenta con que el usuario tiene un saldo inicial de $100000.
+    Mostrar un menú: 1. Consultar saldo, 2. Retirar dinero, 3. Depositar dinero, 4. Salir
+    Repetir el menú usando while hasta elegir salir
+    -->
+    <script>
+      let saldo = 100000;
+      let opcion = 0;
+
+      while (opcion !== 4) {
+        opcion = parseInt(prompt("CAJERO AUTOMÁTICO\n1. Consultar saldo\n2. Retirar dinero\n3. Depositar dinero\n4. Salir\n\nIngrese opción:"));
+
+        if (opcion === 1) {
+          alert("Su saldo actual es: $" + saldo);
+        } else if (opcion === 2) {
+          let retiro = parseInt(prompt("¿Cuánto desea retirar?"));
+          if (retiro > 0 && retiro <= saldo) {
+            saldo -= retiro;
+            alert("Retiro exitoso. Nuevo saldo: $" + saldo);
+          } else {
+            alert("Fondos insuficientes o monto inválido");
+          }
+        } else if (opcion === 3) {
+          let deposito = parseInt(prompt("¿Cuánto desea depositar?"));
+          if (deposito > 0) {
+            saldo += deposito;
+            alert("Depósito exitoso. Nuevo saldo: $" + saldo);
+          } else {
+            alert("Monto inválido");
+          }
+        } else if (opcion === 4) {
+          alert("Gracias por usar el cajero");
+        } else {
+          alert("Opción inválida");
+        }
+      }
+    </script>
+</body>
+</html>

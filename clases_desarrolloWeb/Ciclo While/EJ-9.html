@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 9
+    Simular un sistema de reservas de entradas de cine. El mismo dispone de 150 lugares.
+    Solicitar cantidad de entradas a reservar
+    Restar las entradas disponibles
+    Continuar hasta que no queden lugares o el usuario decida salir
+    Mostrar los lugares restantes después de cada operación.
+    -->
+    <script>
+      let lugaresDisponibles = 150;
+      let continuar = true;
+
+      while (continuar && lugaresDisponibles > 0) {
+        let cantidad = parseInt(prompt("Lugares disponibles: " + lugaresDisponibles + "\n¿Cuántas entradas desea reservar? (0 para salir):"));
+
+        if (cantidad === 0) {
+          continuar = false;
+          document.write("<h2>Gracias por usar nuestro sistema de reservas</h2>");
+        } else if (cantidad > 0 && cantidad <= lugaresDisponibles) {
+          lugaresDisponibles -= cantidad;
+          document.write("<p>Entradas reservadas: " + cantidad + "</p>");
+          document.write("<p>Lugares restantes: " + lugaresDisponibles + "</p>");
+          if (lugaresDisponibles === 0) {
+            document.write("<p><strong>¡Entradas agotadas!</strong></p>");
+            continuar = false;
+          }
+        } else {
+          alert("Cantidad inválida o mayor a los lugares disponibles");
+        }
+      }
+
+      if (lugaresDisponibles === 0 && continuar) {
+        document.write("<h2>¡Todas las entradas han sido vendidas!</h2>");
+      }
+    </script>
+</body>
+</html>

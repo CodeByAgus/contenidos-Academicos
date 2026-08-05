@@ -1,0 +1,304 @@
+/* ====================================================================
+   PATAS & SONRISAS — Hoja de estilos principal
+   Cada bloque responde a un comentario del HTML explicando qué se agregó
+==================================================================== */
+
+
+/* --------------------------------------------------------------------
+   RESET GENERAL
+   El navegador aplica márgenes y paddings distintos por defecto en cada
+   elemento. Con este reset los unificamos en cero para partir desde un
+   punto limpio y predecible.
+   box-sizing: border-box hace que el padding no agrande el elemento,
+   sino que "entre" dentro del ancho definido.
+-------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* El HTML solo define <body> sin estilos.
+   Aquí le damos fuente, fondo gris claro y color de texto base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+
+/* --------------------------------------------------------------------
+   HEADER
+   Respuesta al comentario del HTML:
+   - Se usó display:flex para poner logo y buscador en la misma fila
+   - justify-content:space-between los empuja a los extremos
+   - Se agregó fondo naranja (#ff6b35) y padding para altura
+-------------------------------------------------------------------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #27a252;
+    padding: 15px 30px;
+}
+
+/* El logo necesita que la imagen y el h1 queden lado a lado → otro flex */
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__logo img {
+    width: 50px;
+    height: 50px;
+}
+
+/* El <h1> era texto negro por defecto. Se lo hizo blanco y se ajustó tamaño */
+.header__logo h1 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* El <input type="search"> ya funciona gracias a HTML.
+   CSS le da el borde redondeado, ancho definido y quita el borde por defecto */
+.header__search {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+
+/* --------------------------------------------------------------------
+   BENEFICIOS (franja informativa)
+   Respuesta al comentario del HTML:
+   - display:flex convierte los 4 <div> de verticales a horizontales
+   - justify-content:space-around los distribuye con espacio parejo
+   - Se agregó fondo amarillo claro y borde inferior para separar visualmente
+-------------------------------------------------------------------- */
+.beneficios {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff3cd;
+    padding: 12px 20px;
+    border-bottom: 2px solid #ffc107;
+}
+
+.beneficio {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.beneficio strong {
+    display: block;
+    color: #333;
+}
+
+.beneficio p {
+    color: #666;
+    margin-top: 3px;
+}
+
+
+/* --------------------------------------------------------------------
+   NAVEGACIÓN
+   Respuesta al comentario del HTML:
+   - list-style:none eliminó los puntos de la lista
+   - display:flex puso los <li> en fila horizontal
+   - Se agregó fondo oscuro (#333) al <nav>
+   - Los <a> son blancos y sin subrayado (text-decoration:none)
+   - El efecto :hover cambia el fondo al pasar el cursor → imposible sin CSS
+-------------------------------------------------------------------- */
+.nav {
+    background-color: #333;
+}
+
+.nav__lista {
+    display: flex;
+    list-style: none;
+    padding: 0 30px;
+}
+
+.nav__lista li a {
+    display: block;
+    padding: 12px 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+/* :hover es una "pseudo-clase" de CSS: aplica estilos solo cuando el cursor
+   está encima del elemento. HTML no puede hacer esto. */
+.nav__lista li a:hover {
+    background-color: #35ff3886;
+}
+
+
+/* --------------------------------------------------------------------
+   MAIN: distribución en 3 columnas
+   Respuesta al comentario del HTML:
+   - display:flex dentro de <main> pone los 3 bloques (aside-section-aside)
+     en una sola fila horizontal
+   - max-width y margin:auto centran el contenido en pantallas grandes
+-------------------------------------------------------------------- */
+.main {
+    display: flex;
+    gap: 20px;
+    padding: 20px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* --------------------------------------------------------------------
+   ASIDES (paneles laterales)
+   Respuesta al comentario del HTML:
+   - Se les asignó un ancho fijo de 200px
+   - flex-shrink:0 evita que se achiquen cuando la pantalla es pequeña
+   - Fondo blanco, borde redondeado y sombra suave crean el "panel visual"
+   - align-self:flex-start hace que no estiren su altura al máximo
+-------------------------------------------------------------------- */
+.aside {
+    width: 200px;
+    flex-shrink: 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+.aside h3 {
+    color: #ff6b35;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.aside ul {
+    list-style: none;
+}
+
+.aside ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.aside ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.aside ul li a:hover {
+    color: #ff6b35;
+}
+
+.aside--der p {
+    font-size: 0.85rem;
+    color: #555;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+
+/* --------------------------------------------------------------------
+   SECCIÓN DE PRODUCTOS
+   Respuesta al comentario del HTML:
+   - flex:1 hace que la sección central ocupe todo el espacio restante
+   - .productos-grid usa display:grid con 3 columnas iguales (1fr cada una)
+   - gap agrega espacio entre las tarjetas
+-------------------------------------------------------------------- */
+.productos {
+    flex: 1;
+}
+
+.productos h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Tarjeta de producto:
+   - HTML tenía el <article> como bloque de texto plano
+   - CSS lo convirtió en "tarjeta" con fondo blanco, sombra y bordes redondeados
+   - display:flex en columna organiza imagen, título, precio y botón verticalmente */
+.producto {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.producto img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.producto h4 {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.producto p {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* El precio estaba como <strong> genérico en HTML.
+   CSS le da color naranja y tamaño destacado */
+.precio {
+    color: #ff6b35;
+    font-size: 1.1rem;
+}
+
+/* El <button> existe y funciona gracias a HTML.
+   CSS le da el color, forma, cursor de mano y efecto hover */
+.btn-comprar {
+    background-color: #ff6b35;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+.btn-comprar:hover {
+    background-color: #e05520;
+}
+
+
+/* --------------------------------------------------------------------
+   FOOTER
+   Respuesta al comentario del HTML:
+   - Se aplicó fondo oscuro (#333) y texto blanco para contraste
+   - text-align:center centró el texto
+   - padding y line-height agregaron altura y separación entre líneas
+-------------------------------------------------------------------- */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    line-height: 2;
+    margin-top: 20px;
+}

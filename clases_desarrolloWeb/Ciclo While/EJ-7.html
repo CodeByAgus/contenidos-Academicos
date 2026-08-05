@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 7
+    Una empresa realiza una encuesta online. Se pide:
+    Solicitar una calificación entre 1 y 5
+    Continuar hasta ingresar 0
+    Contar cuántas respuestas hubo de cada valor
+    Mostrar el promedio general
+    -->
+    <script>
+      let calificacion = parseInt(prompt("Ingrese calificación (1-5, 0 para salir):"));
+      let cant1 = 0, cant2 = 0, cant3 = 0, cant4 = 0, cant5 = 0;
+      let sumCalificaciones = 0;
+      let cantidad = 0;
+
+      while (calificacion !== 0) {
+        if (calificacion === 1) cant1++;
+        else if (calificacion === 2) cant2++;
+        else if (calificacion === 3) cant3++;
+        else if (calificacion === 4) cant4++;
+        else if (calificacion === 5) cant5++;
+
+        sumCalificaciones += calificacion;
+        cantidad++;
+        calificacion = parseInt(prompt("Ingrese calificación (1-5, 0 para salir):"));
+      }
+
+      let promedio = cantidad > 0 ? sumCalificaciones / cantidad : 0;
+
+      document.write("<h2>Resultados Encuesta</h2>");
+      document.write("<p>Calificación 1: " + cant1 + " respuestas</p>");
+      document.write("<p>Calificación 2: " + cant2 + " respuestas</p>");
+      document.write("<p>Calificación 3: " + cant3 + " respuestas</p>");
+      document.write("<p>Calificación 4: " + cant4 + " respuestas</p>");
+      document.write("<p>Calificación 5: " + cant5 + " respuestas</p>");
+      document.write("<p>Promedio general: " + promedio.toFixed(2) + "</p>");
+    </script>
+</body>
+</html>

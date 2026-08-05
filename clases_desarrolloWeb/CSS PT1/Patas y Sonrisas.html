@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML puede definir el título de la pestaña del navegador -->
+    <title>Patas &amp; Sonrisas - PetShop</title>
+    <!-- Para cambiar tipografías, colores y tamaños del título → necesitamos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER
+         HTML: la etiqueta <header> le dice al navegador "esto es la cabecera"
+         HTML: <img> muestra el logo, <h1> es el nombre principal de la página
+         PROBLEMA: el logo y el buscador aparecen uno debajo del otro por defecto
+         CSS necesario: alinearlos en fila (flexbox), colores y fondo naranja
+    ============================================================ -->
+    <header class="header">
+        <div class="header__logo">
+            <img src="/CSS PT1/Public/Paw.png" alt="Logo Patas y Sonrisas">
+            <h1>Patas &amp; Sonrisas</h1>
+        </div>
+        <!-- HTML puede crear el campo funcional de búsqueda con <input> -->
+        <!-- CSS necesario: borde redondeado, ancho y apariencia del campo -->
+        <input type="search" class="header__search" placeholder="¿Qué estás buscando?" autocomplete="off" aria-label="Buscar productos">
+    </header>
+
+    <!-- ============================================================
+         BENEFICIOS (franja informativa)
+         HTML: agrupa los 4 textos en una <section> con <div> internos
+         PROBLEMA: por defecto los <div> se apilan verticalmente
+         CSS necesario: mostrarlos en fila horizontal (flexbox), fondo amarillo
+    ============================================================ -->
+    <section class="beneficios">
+        <div class="beneficio">
+            <strong>Envíos a Todo el País</strong>
+            <p>Entrega rápida y segura</p>
+        </div>
+        <div class="beneficio">
+            <strong>Hasta 6 Cuotas Sin Interés</strong>
+            <p>Pago cómodo y sin recargos</p>
+        </div>
+        <div class="beneficio">
+            <strong>Compra Segura y con Garantía</strong>
+            <p>Protección en cada pedido</p>
+        </div>
+        <div class="beneficio">
+            <strong>Política de Cambios y Devoluciones</strong>
+            <p>Fácil y sin complicaciones</p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         NAVEGACIÓN
+         HTML: <nav> identifica el menú, <ul>/<li> crean la lista de ítems
+         HTML: <a href="#"> crea los enlaces (sin destino real por ahora)
+         PROBLEMA: la lista tiene puntos y se muestra en vertical por defecto
+         CSS necesario: quitar los puntos, poner en fila, colores y hover
+    ============================================================ -->
+    <nav class="nav">
+        <ul class="nav__lista">
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Accesorios</a></li>
+            <li><a href="#">Alimentos</a></li>
+            <li><a href="#">Higiene y Cuidado</a></li>
+        </ul>
+    </nav>
+
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL
+         HTML: <main> marca el contenido central de la página
+         PROBLEMA: aside izq, section central y aside der se apilan verticalmente
+         CSS necesario: distribuirlos en 3 columnas (flexbox)
+    ============================================================ -->
+    <main class="main">
+
+        <!-- ASIDE IZQUIERDA: panel de categorías
+             HTML: <aside> indica contenido secundario/lateral, <ul>/<li> listan categorías
+             PROBLEMA: es un bloque sin estilos, no se ve como "panel lateral"
+             CSS necesario: ancho fijo, fondo blanco, borde y sombra -->
+        <aside class="aside aside--izq">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">Perros</a></li>
+                <li><a href="#">Gatos</a></li>
+                <li><a href="#">Aves</a></li>
+                <li><a href="#">Peces</a></li>
+            </ul>
+        </aside>
+
+        <!-- SECCIÓN CENTRAL: grilla de productos
+             HTML: <section> agrupa el bloque temático de productos
+             HTML: <article> representa un producto independiente (tiene sentido solo)
+             HTML: <h4>, <p>, <strong> organizan los datos del producto
+             HTML: <button> crea el botón funcional de "Agregar al carrito"
+             PROBLEMA: los artículos se muestran uno abajo del otro, sin diseño de tarjeta
+             CSS necesario: grilla de columnas (grid), diseño de tarjeta con sombra y bordes redondeados,
+                            color del precio y estilo del botón -->
+        <section class="productos">
+            <h2>Productos Destacados</h2>
+            <div class="productos-grid">
+
+                <article class="producto">
+                    <img src="/CSS PT1/Public/Paw.png" alt="Alimento para perro">
+                    <h4>Alimento Premium Perros</h4>
+                    <p>Bolsa 15kg - Todas las razas</p>
+                    <strong class="precio">$8.500</strong>
+                    <button class="btn-comprar">Agregar al carrito</button>
+                </article>
+
+                <article class="producto">
+                    <img src="/CSS PT1/Public/Paw.png" alt="Juguete para gato">
+                    <h4>Juguete para Gatos</h4>
+                    <p>Ratón con sonido interactivo</p>
+                    <strong class="precio">$1.200</strong>
+                    <button class="btn-comprar">Agregar al carrito</button>
+                </article>
+
+                <article class="producto">
+                    <img src="/CSS PT1/Public/Paw.png" alt="Correa retráctil">
+                    <h4>Correa Retráctil</h4>
+                    <p>Hasta 5 metros - Varios colores</p>
+                    <strong class="precio">$3.700</strong>
+                    <button class="btn-comprar">Agregar al carrito</button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ASIDE DERECHA: novedades y ofertas
+             HTML: <aside> con texto informativo secundario
+             CSS necesario: igual que el aside izquierdo, panel visual -->
+        <aside class="aside aside--der">
+            <h3>Novedades</h3>
+            <p>Nueva línea de collares artesanales</p>
+            <p>Descuentos en alimentos esta semana</p>
+        </aside>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         HTML: <footer> marca el pie de página con información de contacto
+         PROBLEMA: es texto sin color ni separación visual del resto
+         CSS necesario: fondo oscuro, texto blanco y centrado
+    ============================================================ -->
+    <footer class="footer">
+        <p>&copy; 2024 Patas &amp; Sonrisas - Todos los derechos reservados</p>
+        <p>Contacto: (011) 1234-5678 | info@patassonrisas.com</p>
+    </footer>
+
+</body>
+</html>

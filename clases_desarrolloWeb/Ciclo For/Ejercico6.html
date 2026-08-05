@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Multi</title>
+</head>
+<body bgcolor="lightgreen">
+    <!--Genera la tabla del numero ingresado -->
+
+    <script language="javascript">
+      numero = parseInt(prompt("Ingrese un número para ver su tabla (1-99):"));
+
+      if ( numero < 1 || numero > 10) {
+        document.write("Entrada inválida.");
+      } else {
+        document.write("<h3>Tabla de multiplicar del " + numero + " (1 a 10)</h3>");
+        for (f = 1; f <= 10; f++) {
+          document.write(numero + " x " + f + " = " + (numero * f) + "<br>");
+        }
+      }
+
+    </script>
+
+
+
+</body>
+</html>

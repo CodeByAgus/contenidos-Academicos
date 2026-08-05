@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 5
+    Se ingresan las edades y el turno de los alumnos de un Instituto. Se pide realizar un programa para determinar la siguiente información:
+    a) Cantidad de alumnos por turno
+    b) Cantidad total de alumnos
+    c) Promedio general de edades
+    Nota: turnos (1: mañana, 2:tarde, 3: noche). El ingreso de los datos finaliza con turno=0
+    -->
+    <script>
+      let turno = parseInt(prompt("Ingrese turno (1: mañana, 2: tarde, 3: noche, 0: salir):"));
+      let cantMañana = 0;
+      let cantTarde = 0;
+      let cantNoche = 0;
+      let totalAlumnos = 0;
+      let sumEdades = 0;
+
+      while (turno !== 0) {
+        let edad = parseInt(prompt("Ingrese edad:"));
+
+        if (turno === 1) {
+          cantMañana++;
+        } else if (turno === 2) {
+          cantTarde++;
+        } else if (turno === 3) {
+          cantNoche++;
+        }
+
+        totalAlumnos++;
+        sumEdades += edad;
+        turno = parseInt(prompt("Ingrese turno (1: mañana, 2: tarde, 3: noche, 0: salir):"));
+      }
+
+      let promedioEdad = totalAlumnos > 0 ? sumEdades / totalAlumnos : 0;
+
+      document.write("<h2>Resultados</h2>");
+      document.write("<p>Alumnos turno mañana: " + cantMañana + "</p>");
+      document.write("<p>Alumnos turno tarde: " + cantTarde + "</p>");
+      document.write("<p>Alumnos turno noche: " + cantNoche + "</p>");
+      document.write("<p>Total de alumnos: " + totalAlumnos + "</p>");
+      document.write("<p>Promedio de edades: " + promedioEdad.toFixed(2) + "</p>");
+    </script>
+</body>
+</html>

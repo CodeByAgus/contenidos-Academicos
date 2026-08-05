@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplos 20</title>
+</head>
+<body bgcolor="lightblue">
+    <!-- Imprimir en pantalla los números del 20 al 0 con rangos de dos en dos, utilizando la sentencia FOR. Aplicar un 
+color de fondo, un color a los números que son múltiplos de 2 y mayores a 10 y otro color a los que son 
+múltiplos de 2 y menores a 10-->
+
+    <script language="javascript">
+      for (f = 20; f >= 0; f += -2) {
+        if (f % 2 === 0 && f>= 10) {
+          document.write("<font color='green'>" + f + "</font> ");
+        } else {
+          document.write("<font color='red'>" + f + "</font> ");
+        }
+      }    
+
+    </script>
+
+
+
+</body>
+</html>

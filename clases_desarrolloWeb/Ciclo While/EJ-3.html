@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 3
+    Hacer un programa que permita ingresar números en forma indefinida hasta que se ingresa un cero. Por cada número ingresado, indicar si es positivo o negativo.
+    -->
+    <script>    
+    let num = parseInt(prompt("Ingrese un número (0 para terminar):"));
+    let canneg = 0;
+    let canpos = 0;
+    while(num !== 0){
+        if (num > 0){
+            canpos++;
+        }
+        else {
+            canneg++;
+        }
+        num = parseInt(prompt("Ingrese un número (0 para terminar):"));
+    }
+
+    document.write("Números positivos: " + canpos + "<br>");
+    document.write("Números negativos: " + canneg);
+
+
+    </script>
+</body>
+</html>

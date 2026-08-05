@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <style>
+        /* Reset default browser styles - removes all margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling - basic font and background */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        /* Container for the page content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Page title */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        /* ============== CAROUSEL STYLES ============== */
+
+        /* Carousel wrapper - holds the entire carousel component */
+        .carousel {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;  /* Hides content that extends beyond carousel boundaries */
+            margin-bottom: 60px;
+        }
+
+        /* Carousel container - holds all images in a row */
+        .carousel-container {
+            position: relative;  /* Required for positioning child elements inside */
+            width: 100%;
+            height: 400px;  /* Fixed height for carousel */
+            overflow: hidden;  /* Hides images that go beyond container width */
+        }
+
+        /* Carousel track - holds all carousel items, animated left/right */
+        .carousel-track {
+            display: flex;  /* Arranges items horizontally */
+            height: 100%;  /* Takes full height of container */
+            transition: transform 0.5s ease;  /* Animates slide transition smoothly over 0.5 seconds */
+            /* transform: translateX() is applied by JavaScript to move carousel */
+        }
+
+        /* Individual carousel item/slide */
+        .carousel-item {
+            min-width: 100%;  /* Each item takes full width of carousel */
+            height: 100%;  /* Takes full height */
+            flex-shrink: 0;  /* Prevents item from shrinking */
+            display: flex;  /* Centers the image inside item */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Images inside carousel - responsive and fit container */
+        .carousel-item img {
+            width: 100%;  /* Takes full width of item */
+            height: 100%;  /* Takes full height */
+            object-fit: cover;  /* Crops image to fit without stretching */
+        }
+
+        /* Previous/Next buttons - positioned absolutely over carousel */
+        .carousel-btn {
+            position: absolute;  /* Positioned relative to carousel-container */
+            top: 50%;  /* Vertically centered */
+            transform: translateY(-50%);  /* Adjusts for button height to truly center */
+            background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent black background */
+            color: white;  /* White text/icon color */
+            border: none;  /* No border */
+            padding: 15px 20px;  /* Internal spacing */
+            font-size: 20px;  /* Large text for visibility */
+            cursor: pointer;  /* Changes cursor to pointer hand */
+            z-index: 10;  /* Places button above carousel images */
+            transition: background-color 0.3s ease;  /* Smooth color change on hover */
+            border-radius: 4px;  /* Slightly rounded corners */
+        }
+
+        /* Previous button - positioned on left side */
+        .carousel-btn.prev {
+            left: 20px;  /* 20px from left edge */
+        }
+
+        /* Next button - positioned on right side */
+        .carousel-btn.next {
+            right: 20px;  /* 20px from right edge */
+        }
+
+        /* Button hover state - changes background to darker, more opaque */
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);  /* Darker, more visible on hover */
+        }
+
+        /* Carousel indicators (dots) - container for all dots */
+        .carousel-indicators {
+            display: flex;  /* Arranges dots horizontally */
+            justify-content: center;  /* Centers dots */
+            gap: 10px;  /* Space between dots */
+            padding: 20px;  /* Space around dots */
+            background-color: #ffffff;  /* White background */
+        }
+
+        /* Individual indicator dot */
+        .indicator {
+            width: 12px;  /* Small circle size */
+            height: 12px;  /* Match width for perfect circle */
+            border-radius: 50%;  /* Makes it circular */
+            background-color: #ddd;  /* Light gray color for inactive dots */
+            cursor: pointer;  /* Pointer cursor for clickability */
+            transition: background-color 0.3s ease;  /* Smooth color change */
+        }
+
+        /* Active indicator dot - the one for currently showing slide */
+        .indicator.active {
+            background-color: #3498db;  /* Blue color for active dot */
+        }
+
+        /* ============== CARD WITH IMAGE STYLES ============== */
+
+        /* Card wrapper - holds image and description together */
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;  /* Hides parts that extend beyond card boundaries */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Animates on hover */
+            max-width: 400px;  /* Limits card width */
+            margin: 0 auto;  /* Centers card on page */
+        }
+
+        /* Card hover effect - lifts card up and increases shadow */
+        .card:hover {
+            transform: translateY(-10px);  /* Moves card up 10px */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);  /* Stronger shadow */
+        }
+
+        /* Card image container - holds the image */
+        .card-image {
+            width: 100%;  /* Takes full width of card */
+            height: 250px;  /* Fixed height for image area */
+            overflow: hidden;  /* Hides image parts that extend beyond */
+        }
+
+        /* Card image - responsive and fills container */
+        .card-image img {
+            width: 100%;  /* Takes full width */
+            height: 100%;  /* Takes full height */
+            object-fit: cover;  /* Crops image to fit without stretching */
+            transition: transform 0.3s ease;  /* Animates zoom on hover */
+        }
+
+        /* Card image hover effect - zooms in slightly */
+        .card:hover .card-image img {
+            transform: scale(1.05);  /* Enlarges image 5% on hover */
+        }
+
+        /* Card content - holds title and description */
+        .card-content {
+            padding: 20px;  /* Internal spacing */
+        }
+
+        /* Card title styling */
+        .card-content h2 {
+            font-size: 22px;  /* Large title */
+            color: #2c3e50;  /* Dark navy color */
+            margin-bottom: 10px;  /* Space below title */
+            font-weight: bold;
+        }
+
+        /* Card description text */
+        .card-content p {
+            font-size: 14px;  /* Slightly smaller than body text */
+            color: #666;  /* Medium gray for readability */
+            line-height: 1.6;  /* Extra space between text lines */
+            margin-bottom: 15px;  /* Space below description */
+        }
+
+        /* Card button styling - call to action */
+        .card-btn {
+            display: inline-block;  /* Allows padding to work properly */
+            padding: 10px 20px;  /* Internal spacing */
+            background-color: #3498db;  /* Blue background */
+            color: white;  /* White text */
+            text-decoration: none;  /* Removes underline from link */
+            border-radius: 4px;  /* Slightly rounded corners */
+            font-size: 14px;  /* Button text size */
+            transition: background-color 0.3s ease;  /* Smooth color change */
+            border: none;  /* No border */
+            cursor: pointer;  /* Pointer cursor */
+        }
+
+        /* Card button hover state - changes background color */
+        .card-btn:hover {
+            background-color: #2980b9;  /* Darker blue on hover */
+        }
+
+        /* Responsive design for mobile screens */
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 250px;  /* Smaller height on mobile */
+            }
+
+            .carousel-btn {
+                padding: 10px 15px;  /* Smaller buttons on mobile */
+                font-size: 16px;
+            }
+
+            .card {
+                max-width: 100%;  /* Full width on mobile */
+            }
+
+            h1 {
+                font-size: 24px;  /* Smaller heading on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Carousel & Card Examples</h1>
+
+        <!-- ============== CAROUSEL SECTION ============== -->
+        <div class="carousel">
+            <!-- Carousel images container -->
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1200x400/3498db/ffffff?text=Slide+1" alt="Slide 1">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1200x400/e74c3c/ffffff?text=Slide+2" alt="Slide 2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1200x400/2ecc71/ffffff?text=Slide+3" alt="Slide 3">
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/1200x400/f39c12/ffffff?text=Slide+4" alt="Slide 4">
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation Buttons -->
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+            </div>
+
+            <!-- Carousel Indicator Dots -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+            </div>
+        </div>
+
+        <!-- ============== CARD WITH IMAGE SECTION ============== -->
+        <div class="card">
+            <!-- Card Image -->
+            <div class="card-image">
+                <img src="https://via.placeholder.com/400x250/9b59b6/ffffff?text=Card+Image" alt="Card Image">
+            </div>
+
+            <!-- Card Content -->
+            <div class="card-content">
+                <h2>Beautiful Card</h2>
+                <p>
+                    This is a basic card component with an image and description. The card has a clean design with a white background,
+                    rounded corners, and a subtle shadow. On hover, the card lifts up and the image zooms in slightly.
+                </p>
+                <a href="#" class="card-btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Carousel Functionality -->
+    <script>
+        // Variable to track current slide index (0 = first slide)
+        let currentSlide = 0;
+
+        // Function to move carousel forward or backward
+        function moveCarousel(direction) {
+            // Get the carousel track element (contains all slides)
+            const track = document.querySelector('.carousel-track');
+            // Get all carousel items (slides)
+            const items = document.querySelectorAll('.carousel-item');
+            // Get total number of slides
+            const totalSlides = items.length;
+
+            // Update current slide index based on direction
+            // If moving backward and on first slide, go to last slide
+            // If moving forward and on last slide, go to first slide (creates loop)
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+            // Move carousel by translating (moving) the track left/right
+            // Each slide is 100% width, so move by currentSlide * 100%
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update the indicator dots to show current slide
+            updateIndicators();
+        }
+
+        // Function to jump directly to a specific slide
+        function goToSlide(slideIndex) {
+            // Set current slide to clicked index
+            currentSlide = slideIndex;
+            // Move carousel to that slide
+            const track = document.querySelector('.carousel-track');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Update indicator dots
+            updateIndicators();
+        }
+
+        // Function to update which indicator dot is highlighted
+        function updateIndicators() {
+            // Get all indicator dots
+            const indicators = document.querySelectorAll('.indicator');
+            // Loop through all dots
+            indicators.forEach((indicator, index) => {
+                // Remove 'active' class from all dots
+                indicator.classList.remove('active');
+            });
+            // Add 'active' class only to the current slide's dot
+            indicators[currentSlide].classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

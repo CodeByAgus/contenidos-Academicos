@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6 - Ciclo While</title>
+</head>
+<body>
+    <!--
+    Ejercicio 6
+    En una página web de inscripción, se deben registrar edades de personas. Para ello, pedir edades hasta ingresar -1. Calcular y mostrar:
+    Cantidad de personas registradas
+    Edad promedio
+    Edad máxima
+    Edad mínima
+    -->
+    <script>
+      let edad = parseInt(prompt("Ingrese edad (-1 para terminar):"));
+      let cantidad = 0;
+      let sumEdades = 0;
+      let maxEdad = edad;
+      let minEdad = edad;
+
+      while (edad !== -1) {
+        cantidad++;
+        sumEdades += edad;
+
+        if (edad > maxEdad) {
+          maxEdad = edad;
+        }
+        if (edad < minEdad) {
+          minEdad = edad;
+        }
+
+        edad = parseInt(prompt("Ingrese edad (-1 para terminar):"));
+      }
+
+      let promedioEdad = cantidad > 0 ? sumEdades / cantidad : 0;
+
+      document.write("<h2>Resultados</h2>");
+      document.write("<p>Cantidad de personas: " + cantidad + "</p>");
+      document.write("<p>Edad promedio: " + promedioEdad.toFixed(2) + "</p>");
+      document.write("<p>Edad máxima: " + maxEdad + "</p>");
+      document.write("<p>Edad mínima: " + minEdad + "</p>");
+    </script>
+</body>
+</html>
